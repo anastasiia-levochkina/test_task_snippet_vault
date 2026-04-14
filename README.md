@@ -1,6 +1,6 @@
 # Snippet Vault
 
-A small full-stack app for saving useful snippets — notes, links or commands.
+A small full-stack app for saving useful snippets - notes, links or commands.
 
 Built as a test task using Next.js + NestJS.
 
