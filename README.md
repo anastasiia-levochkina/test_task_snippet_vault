@@ -48,3 +48,5 @@ NEXT_PUBLIC_API_URL=http://localhost:3001
 App: http://localhost:3000
 
 API: http://localhost:3001/snippets
+
+Test link - https://test-task-snippet-vault.vercel.app/
