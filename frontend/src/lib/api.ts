@@ -2,6 +2,14 @@ import { Snippet, SnippetPayload, SnippetsResponse } from './types';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
 
+function normalizeSnippet(snippet: Snippet): SnippetPayload & Snippet {
+  return {
+    ...snippet,
+    tags: Array.isArray(snippet.tags) ? snippet.tags : [],
+    type: snippet.type ?? 'note',
+  };
+}
+
 async function handleResponse<T>(response: Response): Promise<T> {
   if (!response.ok) {
     let message = 'Something went wrong';
@@ -40,7 +48,12 @@ export async function getSnippets(params?: {
     cache: 'no-store',
   });
 
-  return handleResponse<SnippetsResponse>(response);
+  const data = await handleResponse<SnippetsResponse>(response);
+
+  return {
+    ...data,
+    items: data.items.map(normalizeSnippet),
+  };
 }
 
 export async function getSnippet(id: string): Promise<Snippet> {
@@ -48,7 +61,9 @@ export async function getSnippet(id: string): Promise<Snippet> {
     cache: 'no-store',
   });
 
-  return handleResponse<Snippet>(response);
+  const data = await handleResponse<Snippet>(response);
+
+  return normalizeSnippet(data);
 }
 
 export async function createSnippet(payload: SnippetPayload): Promise<Snippet> {

@@ -23,6 +23,7 @@ export class Snippet {
   @Prop({
     required: true,
     enum: Object.values(SnippetType),
+    default: SnippetType.NOTE,
   })
   type!: SnippetType;
 
