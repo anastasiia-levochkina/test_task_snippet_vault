@@ -118,7 +118,7 @@ export default function SnippetDetailsPage({ params }: Props) {
 				<p className="mb-5 whitespace-pre-wrap text-gray-700">{snippet.content}</p>
 
 				<div className="mb-5 flex flex-wrap gap-2">
-					{snippet.tags.map((tag) => (
+					{(snippet.tags ?? []).map((tag) => (
 						<span
 							key={tag}
 							className="rounded-full bg-gray-100 px-3 py-1 text-sm text-gray-700"

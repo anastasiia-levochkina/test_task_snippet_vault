@@ -218,7 +218,7 @@ export default function HomePage() {
 								<p className="mt-4 whitespace-pre-wrap text-gray-800">{snippet.content}</p>
 
 								<div className="mt-4 flex flex-wrap gap-2">
-									{snippet.tags.map((tag) => (
+									{(snippet.tags ?? []).map((tag) => (
 										<span
 											key={tag}
 											className="rounded-full bg-gray-100 px-3 py-1 text-sm text-gray-700"
