@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import Pagination from '@/components/pagination';
 import { createSnippet, deleteSnippet, getSnippets } from '@/lib/api';
@@ -228,12 +229,21 @@ export default function HomePage() {
 									))}
 								</div>
 
-								<button
-									onClick={() => handleDelete(snippet._id)}
-									className="mt-4 rounded-lg bg-red-500 px-4 py-2 text-white hover:bg-red-600 transition"
-								>
-									Delete
-								</button>
+								<div className="mt-4 flex gap-2">
+									<Link
+										href={`/snippets/${snippet._id}/edit`}
+										className="rounded-lg border px-4 py-2 text-sm hover:bg-gray-50"
+									>
+										Edit
+									</Link>
+
+									<button
+										onClick={() => handleDelete(snippet._id)}
+										className="rounded-lg bg-red-500 px-4 py-2 text-white hover:bg-red-600 transition"
+									>
+										Delete
+									</button>
+								</div>
 							</div>
 							))}
 						</div>
