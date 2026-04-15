@@ -41,8 +41,8 @@ export default function EditSnippetPage({ params }: Props) {
 				setSnippet(data);
 				setTitle(data.title);
 				setContent(data.content);
-				setTags(data.tags.join(', '));
-				setType(data.type);
+				setTags((data.tags ?? []).join(', '));
+				setType(data.type ?? 'note');
 			} catch (err) {
 				setError(
 					err instanceof Error ? err.message : 'Failed to load snippet',
